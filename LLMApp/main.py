@@ -1,6 +1,10 @@
 from fastapi import FastAPI
+from LLMApp.core.event_handler import start_app_handler
 
 app = FastAPI()
+
+app.add_event_handler("startup", start_app_handler(
+    app, "usamakenway/Wizard-Vicuna-7B-Uncensored-SuperHOT-8K-AutoGPTQ"))
 
 if __name__ == "__main__":
     import uvicorn

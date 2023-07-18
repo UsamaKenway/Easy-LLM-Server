@@ -34,6 +34,7 @@ class GPTQModel:
             stopping_criteria=self.stopping_criteria,
         )
         self.llm = HuggingFacePipeline(pipeline=self.pipe)
+        return self.llm
 
     def unload_model(self):
         torch.cuda.empty_cache()
