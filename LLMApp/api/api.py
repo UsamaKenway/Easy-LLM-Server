@@ -8,13 +8,13 @@ router = APIRouter()
 class PredictRequest(BaseModel):
     user_name: Optional[str] = Field(None, title="user_name", description="User's name")
     ai_name: Optional[str] = Field(None)
-    content: List[Dict[str, str]] = Field(..., title="data_dictionary",
+    messages: List[Dict[str, str]] = Field(..., title="data_dictionary",
                                           description="Data dictionary")
 
 
 @router.post("/chat")
 async def predict(payload: PredictRequest):
-    content = payload.content
+    messages = payload.messages
     human_predix = payload.user_name
     ai_prefix = payload.ai_name
 
