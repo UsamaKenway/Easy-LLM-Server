@@ -16,6 +16,7 @@ class Conversation:
         Returns:
             None
         """
+        self.user_input = None
         self.messages = messages
         self.memory_buffer = ConversationBufferWindowMemory(
             k=6, return_messages=True, ai_prefix=ai_prefix, human_prefix=human_prefix
@@ -49,11 +50,21 @@ class Conversation:
         messages = self.messages
 
         prompt_template = ""
-        for message in messages:
+        for idx, message in enumerate(messages):
             if message["role"] == "system":
                 prompt_template += message["content"] + "\n\n"
             if message["role"] == "user":
-                self.memory_buffer.chat_memory.add_user_message(message["content"])
+                if idx == len(messages) - 1:
+                    self.user_input = message["content"]
+                else:
+                    self.memory_buffer.chat_memory.add_user_message(message["content"])
+                    self.user_input = "continue"
 
             if message["role"] == "assistant":
                 self.memory_buffer.chat_memory.add_ai_message(message["content"])
+
+    def predict(self):
+
+        response = self.conversation.predict(input=self.user_input)
+
+        return response
