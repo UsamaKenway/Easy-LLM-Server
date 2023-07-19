@@ -17,16 +17,19 @@ class Conversation:
             None
         """
         self.user_input = None
+        self.human_prefix = human_prefix
+        self.ai_prefix = ai_prefix
         self.messages = messages
         self.memory_buffer = ConversationBufferWindowMemory(
             k=6, return_messages=True, ai_prefix=ai_prefix, human_prefix=human_prefix
         )
-
+        prompt_template = self.process_content()
         self.conversation = ConversationChain(
             llm=llm,
             verbose=False,
             memory=self.memory_buffer
         )
+        self.conversation.prompt.template = prompt_template
 
     def process_content(self):
         """
@@ -53,6 +56,11 @@ class Conversation:
         for idx, message in enumerate(messages):
             if message["role"] == "system":
                 prompt_template += message["content"] + "\n\n"
+                postfix_prompt = "\n\nCurrent conversation:\n{history}\n{Human}: {input}\n{AI}:"
+                prompt_template += postfix_prompt
+                prompt_template = prompt_template.replace(
+                    "{Human}", self.human_prefix).replace(
+                    "{AI}", self.ai_prefix)
             if message["role"] == "user":
                 if idx == len(messages) - 1:
                     self.user_input = message["content"]
@@ -62,6 +70,8 @@ class Conversation:
 
             if message["role"] == "assistant":
                 self.memory_buffer.chat_memory.add_ai_message(message["content"])
+
+        return prompt_template
 
     def predict(self):
 
