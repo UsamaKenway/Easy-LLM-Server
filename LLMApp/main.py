@@ -4,7 +4,7 @@ from LLMApp.api.api import router
 app = FastAPI()
 
 app.add_event_handler("startup", start_app_handler(
-    app, "usamakenway/Wizard-Vicuna-7B-Uncensored-SuperHOT-8K-AutoGPTQ"))
+    app, "usamakenway/Wizard-Vicuna-13B-Uncensored-AutoGPTQ"))
 
 app.include_router(router)
 
