@@ -7,7 +7,7 @@ router = APIRouter()
 
 @router.post("/chat")
 async def predict(request: Request, payload: PredictRequest):
-
+    print("API HIT")
     messages = payload.messages
     human_predix = payload.user_name
     ai_prefix = payload.ai_name

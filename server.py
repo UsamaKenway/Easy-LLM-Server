@@ -1,13 +1,9 @@
-import random
-import time
 from gradio_.chatbot import ChatBot
 import gradio as gr
-import requests
 from fastapi import FastAPI
-from fastapi.routing import APIRouter
 from LLMApp.core.event_handler import start_app_handler
-from LLMApp.api.api import predict
 from LLMApp.api.api import router
+import asyncio
 
 
 class ChatBotApp:
@@ -25,12 +21,33 @@ def main():
     app.add_event_handler("startup", start_app_handler(
         app, "usamakenway/Wizard-Vicuna-7B-Uncensored-SuperHOT-8K-AutoGPTQ"))
 
-    # router = APIRouter()
-    # router.include_router(predict)
     app.include_router(router)
 
-    bot_app = ChatBotApp()
+    # Use asyncio event loop to wait for FastAPI server to start
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(start_fastapi_server(app))
 
+
+async def start_fastapi_server(app):
+    import uvicorn
+    config = uvicorn.Config(app, host="0.0.0.0", port=8080, log_level="info")
+    server = uvicorn.Server(config)
+
+    # Start the FastAPI server asynchronously
+    asyncio.ensure_future(server.serve())
+
+    # Wait for the FastAPI server to be fully running
+    while True:
+        if server.started:
+            break
+        await asyncio.sleep(0.1)
+
+    # FastAPI server is running, now start Gradio application
+    start_gradio_app()
+
+
+def start_gradio_app():
+    bot_app = ChatBotApp()
     with gr.Blocks() as demo:
         no = gr.Label("LLM WebUI Gradio Server")
         chatbot = gr.Chatbot()
@@ -39,17 +56,11 @@ def main():
         clear = gr.ClearButton([msg, chatbot])
 
         msg.submit(bot_app.run, [msg, chatbot], [msg, chatbot])
-
-    demo.launch(share=True, debug=True)
+    demo.launch(share=True)
 
 
 if __name__ == "__main__":
-    import threading
-    import uvicorn
-
-    server_thread = threading.Thread(target=lambda: uvicorn.run("LLMApp.main:app", host="0.0.0.0", port=8080, log_level="info"))
-    server_thread.start()
-
+    # Run the main function to start both FastAPI and Gradio
     main()
 
 
