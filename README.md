@@ -1,6 +1,10 @@
 # LLM-fastapi-n-gradio-server
 Use open source models in your app using API, and test it in Realtime using gradio webui. Langchain has been implemented.
 
+![image](https://github.com/UsamaKenway/LLM-fastapi-n-gradio-server/assets/56207634/0455fd83-e445-479d-b7a6-0fbddda0601e)
+
+<img src="https://github.com/UsamaKenway/LLM-fastapi-n-gradio-server/assets/56207634/0455fd83-e445-479d-b7a6-0fbddda0601e"width="50%" >
+
 
 ```sh
 $ uvicorn LLMApp.main:app --reload --host 0.0.0.0 --port 8080
