@@ -45,4 +45,4 @@ If the Last message is not from ```"role": "user"```, the system will run "conti
 
 ### Langchain
 code here: [LLMApp/langchain/conversation.py](./LLMApp/langchain/conversation.py)
-Example of How you can use it in your Backend app here: [gradio_/chatbot.py](.gradio_/chatbot.py) 
+Example of How you can use it in your Backend app here: [gradio_/chatbot.py](./gradio_/chatbot.py) 
