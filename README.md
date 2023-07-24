@@ -2,18 +2,18 @@
 This project allows you to use open-source language models in your applications through an API and test the models in real-time using Gradio's web user interface. It includes an implementation of Langchain.
 
 The project can run in 2 ways.
-1. Fastapi only mode, you run it through uvicorn command. "[Jump to example](###Launch-through-uvicorn-command)"
+1. Fastapi only mode, you run it through uvicorn command. "[Jump to example](#launch-through-uvicorn-command)"
 2. Gradio + Fastapi which you can run by launching ```server.py```. 
-In both the example. You can hit a POST API request with this payload -> "[Jump to example](###Payload-example)"
+In both the example. You can hit a POST API request with this payload -> "[Jump to example](#payload-examplee)"
 
 Gradio Screenshot:
 ![image](https://github.com/UsamaKenway/LLM-fastapi-n-gradio-server/assets/56207634/0455fd83-e445-479d-b7a6-0fbddda0601e)
 
-###Launch-through-uvicorn-command
+### Launch-through-uvicorn-command
 ```sh
 $ uvicorn LLMApp.main:app --reload --host 0.0.0.0 --port 8080
 ```
-###Payload-example
+### Payload-example
 The chatbot API follows the format commonly used in ChatGPT, making it familiar to many users. You can send messages in a list, where each message is a dictionary with two key-value pairs: "role" and "content". The roles can be "system", "user", or "assistant". For example:
 ```sh
 
