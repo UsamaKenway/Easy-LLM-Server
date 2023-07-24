@@ -13,12 +13,17 @@ class ChatBotApp:
         chatbot.append((message, response))
         return "", chatbot
 
+    def update_prompt(self, prompt):
+        self.bot.update_system_messages(prompt)
+
 
 def run_gradio_server():
     bot_app = ChatBotApp()
 
     with gr.Blocks() as demo:
         no = gr.Label("LLM WebUI Gradio Server")
+        gr.Interface(fn=bot_app.update_prompt, inputs="text", outputs=None)
+
         chatbot = gr.Chatbot()
 
         msg = gr.Textbox()

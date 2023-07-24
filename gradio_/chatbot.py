@@ -41,3 +41,11 @@ class ChatBot:
 
         self.add_ai_message(chatbot_response)
         return chatbot_response
+
+    def update_system_messages(self, prompt):
+        if prompt is None or prompt == "":
+            prompt = "You are a friendly AI Assistant"
+
+        for message in self.messages:
+            if message["role"] == "system":
+                message["content"] = prompt
