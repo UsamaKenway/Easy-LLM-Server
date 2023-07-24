@@ -43,3 +43,6 @@ You can also assign names to the roles for a role-playing conversation:
 Note:
 If the Last message is not from ```"role": "user"```, the system will run "continue" to make the assistant continue typing.
 
+### Langchain
+code here: [LLMApp/langchain/conversation.py](./LLMApp/langchain/conversation.py)
+Example of How you can use it in your Backend app here: [gradio_/chatbot.py](.gradio_/chatbot.py) 
