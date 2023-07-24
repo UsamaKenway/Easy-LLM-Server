@@ -1,37 +1,6 @@
-from gradio_.chatbot import ChatBot
-import gradio as gr
+from gradio_.chatbot_app import run_gradio_server
 import threading
 import uvicorn
-
-
-class ChatBotApp:
-    def __init__(self):
-        self.bot = ChatBot()
-
-    def run(self, message, chatbot):
-        response = self.bot.respond(message)
-        chatbot.append((message, response))
-        return "", chatbot
-
-    def update_prompt(self, prompt):
-        self.bot.update_system_messages(prompt)
-
-
-def run_gradio_server():
-    bot_app = ChatBotApp()
-
-    with gr.Blocks() as demo:
-        no = gr.Label("LLM WebUI Gradio Server")
-        gr.Interface(fn=bot_app.update_prompt, inputs="text", outputs=None)
-
-        chatbot = gr.Chatbot()
-
-        msg = gr.Textbox()
-        clear = gr.ClearButton([msg, chatbot])
-
-        msg.submit(bot_app.run, [msg, chatbot], [msg, chatbot])
-
-    demo.launch(share=True, debug=True)
 
 
 def run_fastapi_server():
@@ -39,7 +8,6 @@ def run_fastapi_server():
 
 
 if __name__ == "__main__":
-
     # Start FastAPI server in a separate thread
     fastapi_server_thread = threading.Thread(target=run_fastapi_server)
     fastapi_server_thread.start()
