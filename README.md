@@ -65,3 +65,9 @@ self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
 ```
 I'll be adding other methods of model loading in future.
 
+### Upcoming features
+- HF model loading
+- Docker implementation
+- Gradio containing options to change character names
+- vector DB for longterm chat history
+- More methods to load model.
