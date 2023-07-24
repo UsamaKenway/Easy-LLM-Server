@@ -4,7 +4,7 @@ This project allows you to use open-source language models in your applications 
 The project can run in 2 ways.
 1. Fastapi only mode, you run it through uvicorn command. "[Jump to example](#launch-through-uvicorn-command)"
 2. Gradio + Fastapi which you can run by launching ```server.py```. 
-In both the example. You can hit a POST API request with this payload -> "[Jump to example](#payload-examplee)"
+In both the example. You can hit a POST API request with this payload -> "[Jump to example](#payload-example)"
 
 Gradio Screenshot:
 ![image](https://github.com/UsamaKenway/LLM-fastapi-n-gradio-server/assets/56207634/0455fd83-e445-479d-b7a6-0fbddda0601e)
