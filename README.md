@@ -15,7 +15,9 @@ pip install auto-gptq
 pip install gradio
 pip install langchain
 ```
-Other requirnments are pytorch cuda
+In case you are unable to install auto-gptq, you can find your desired .whl file here [AutoGPTQ Releases](https://github.com/PanQiWei/AutoGPTQ/releases)
+
+Other requirements are pytorch cuda
 ### Launch-through-uvicorn-command
 ```sh
 $ uvicorn LLMApp.main:app --reload --host 0.0.0.0 --port 8080
