@@ -1,6 +1,6 @@
 from typing import Callable
 from fastapi import FastAPI
-from LLMApp.models.auto_gptq import GPTQModel
+from LLMApp.models.load_llm import GPTQModel
 import torch
 
 
