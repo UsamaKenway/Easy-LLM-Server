@@ -14,7 +14,8 @@ class HFModel:
         self.base_model = None
         self.model_name = model_name
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
-        stop_token_ids = self.tokenizer.convert_tokens_to_ids(['</s>'])
+        stop_token_ids = self.tokenizer('</s>', add_special_tokens=False,
+                                   return_tensors="pt").input_ids
         self.stopping_criteria = StoppingCriteriaList([StopOnTokens(stop_token_ids)])
 
     def set_hf_pipe(self):
@@ -57,11 +58,14 @@ class HFModel:
         self.set_hf_pipe()
         # return self.llm
 
-    def update_stop_sequence(self, additional_tokens):
-        print(additional_tokens)
-        stop_token_ids = self.tokenizer.convert_tokens_to_ids(
-            ['</s>'] + additional_tokens)
+    def update_stop_sequence(self, human_predix):
+
+        stop_token_text = f"\n{human_predix}"
+        stop_token_ids = self.tokenizer(stop_token_text, add_special_tokens=False,
+                                   return_tensors="pt").input_ids[:, 1:]
+        print(stop_token_ids)
         self.stopping_criteria = StoppingCriteriaList([StopOnTokens(stop_token_ids)])
+
         self.set_hf_pipe()
         return self.llm
 

@@ -16,7 +16,7 @@ async def predict(request: Request, payload: PredictRequest):
     llm_obj = request.app.state.model_instance
 
     # Update the stop sequence and get the llm_pipe
-    llm_pipe = llm_obj.update_stop_sequence(["\n"+human_predix, "\n"+ai_prefix])
+    llm_pipe = llm_obj.update_stop_sequence(human_predix)
 
     chat = Conversation(
         llm_pipe,
