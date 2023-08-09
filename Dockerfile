@@ -11,8 +11,8 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the LLMApp code into the container
-COPY ./LLMAPP ./LLMAPP
-# COPY LLMApp /app/LLMApp
+#COPY ./LLMAPP ./LLMAPP
+COPY LLMApp /app/LLMApp
 
 # Expose the port that UVicorn will listen on
 EXPOSE 8080
