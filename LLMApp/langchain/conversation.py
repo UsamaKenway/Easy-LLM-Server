@@ -74,7 +74,13 @@ class Conversation:
         return prompt_template
 
     def predict(self):
-
         response = self.conversation.predict(input=self.user_input)
 
-        return response
+        # This deletes the stop sequence triggered word.
+        stop_word = f"\n{self.human_prefix}"
+        if response.endswith(stop_word):
+            filtered_response = response[:-len(stop_word)]
+        else:
+            filtered_response = response
+
+        return filtered_response
