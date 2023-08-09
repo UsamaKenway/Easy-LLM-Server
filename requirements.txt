@@ -1,0 +1,23 @@
+torch==2.0.0+cu118 torchvision==0.15.1+cu118 torchaudio==2.0.1 --index-url https://download.pytorch.org/whl/cu118
+transformers==4.30.2
+accelerate==0.21.0
+https://github.com/PanQiWei/AutoGPTQ/releases/download/v0.3.0/auto_gptq-0.3.0+cu118-cp310-cp310-win_amd64.whl; platform_system == "Windows"
+https://github.com/PanQiWei/AutoGPTQ/releases/download/v0.3.0/auto_gptq-0.3.0+cu118-cp310-cp310-linux_x86_64.whl; platform_system == "Linux" and platform_machine == "x86_64"
+bitsandbytes==0.41.1; platform_system != "Windows"
+https://github.com/jllllll/bitsandbytes-windows-webui/releases/download/wheels/bitsandbytes-0.41.1-py3-none-win_amd64.whl; platform_system == "Windows"
+datasets==2.13.1
+fastapi==0.100.0
+gradio==3.37.0
+huggingface-hub==0.16.4
+langchain==0.0.180
+mypy-extensions==1.0.0
+ninja==1.11.1
+numpy==1.25.1
+peft==0.4.0
+scipy==1.11.1
+tqdm==4.65.0
+typing_extensions==4.7.1
+urllib3==2.0.3
+uvicorn==0.23.0
+websockets==11.0.3
+xxhash==3.2.0
