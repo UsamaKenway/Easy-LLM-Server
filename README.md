@@ -57,19 +57,24 @@ code here: [LLMApp/langchain/conversation.py](./LLMApp/langchain/conversation.py
 Example of How you can use it in your Backend app here: [gradio_/chatbot.py](./gradio_/chatbot.py) 
 
 ### Model Load
-Currently, the model is being loaded using AutoGPTQ. You can change it to transofmers, if you require. 
-You can change the code in [LLMApp/models/auto_gptq.py](./LLMApp/models/auto_gptq.py) 
+Both HF and quantized models are supported. Class here: [LLMApp/models/load_llm.py](./LLMApp/models/load_llm.py) 
+
+1. Load using HF transformers.AutoModelForCausalLM.from_pretrained:
 ```python
-self.base_model = AutoGPTQForCausalLM.from_quantized(self.model_name,
-                                                             device="cuda:0",
-                                                             use_safetensors=True)
-self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+from LLMApp.models.load_llm import HFModel
+HFModel(model_name)
 ```
-I'll be adding other methods of model loading in future.
+2. Load using AutoGPTQ
+
+```python
+from LLMApp.models.load_llm import GPTQModel
+GPTQModel(model_name)
+```
+By default the model loads in ```_startup_model()``` through ```start_app_handler```
 
 ### Upcoming features
-- HF model loading
-- Docker implementation
+- 
+- 
 - Gradio containing options to change character names
 - vector DB for longterm chat history
-- More methods to load model.
+- control over quantization config through loading model
