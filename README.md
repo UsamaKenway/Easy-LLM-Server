@@ -12,6 +12,7 @@ This project allows you to use open-source language models in your applications 
 - 🚀 FastAPI | Unload model through API
 - 💬 Langchain code | support for any conversation memory type
 - 💬 Langchain code | Custom Ai Prefix and Human Prefix names
+- ✋ Stop Sequence | Automaticlly stops at human prefix to stop rambling.
 
 The project can run in 2 ways.
 1. Fastapi only mode, you run it through uvicorn command. "[Jump to example](#launch-through-uvicorn-command)"
