@@ -1,6 +1,9 @@
 from fastapi import APIRouter, Request
 from LLMApp.langchain.conversation import Conversation
-from LLMApp.utils.core.predict_model import PredictRequest, PredictResponse
+from LLMApp.core.event_handler import _shutdown_model, _startup_model
+from LLMApp.utils.core.predict_model import PredictRequest, PredictResponse, LoadModelRequest
+from LLMApp.app import app
+
 
 router = APIRouter()
 
@@ -27,3 +30,27 @@ async def predict(request: Request, payload: PredictRequest):
     res = chat.predict()
 
     return PredictResponse(result=res)
+
+
+@router.post("/unload_model/")
+def unload_model():
+    try:
+        if hasattr(app.state, "model_instance"):
+            _shutdown_model(app)
+            msg = "Model unloaded successfully"
+        else:
+            msg = "No model loaded previously"
+        return {"message": msg}
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@router.post("/load_model/")
+def load_model(request: LoadModelRequest):
+    model_name = request.model_name
+    try:
+        _shutdown_model(app)
+        _startup_model(app, model_name)
+        return {"message": f"Model '{model_name}' loaded successfully."}
+    except Exception as e:
+        return {"error": str(e)}

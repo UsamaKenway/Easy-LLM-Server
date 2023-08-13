@@ -5,6 +5,8 @@ from langchain.llms import HuggingFacePipeline
 from transformers import StoppingCriteriaList
 from LLMApp.utils.stop_sequence import StopOnTokens
 import torch
+import gc
+import time
 
 
 class HFModel:
@@ -15,7 +17,7 @@ class HFModel:
         self.model_name = model_name
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
         stop_token_ids = self.tokenizer('</s>', add_special_tokens=False,
-                                   return_tensors="pt").input_ids
+                                        return_tensors="pt").input_ids
         self.stopping_criteria = StoppingCriteriaList([StopOnTokens(stop_token_ids)])
 
     def set_hf_pipe(self):
@@ -59,18 +61,14 @@ class HFModel:
         # return self.llm
 
     def update_stop_sequence(self, human_predix):
-
         stop_token_text = f"\n{human_predix}"
         stop_token_ids = self.tokenizer(stop_token_text, add_special_tokens=False,
-                                   return_tensors="pt").input_ids[:, 1:]
+                                        return_tensors="pt").input_ids[:, 1:]
         print(stop_token_ids)
         self.stopping_criteria = StoppingCriteriaList([StopOnTokens(stop_token_ids)])
 
         self.set_hf_pipe()
         return self.llm
-
-    def unload_model(self):
-        torch.cuda.empty_cache()
 
 
 class GPTQModel(HFModel):

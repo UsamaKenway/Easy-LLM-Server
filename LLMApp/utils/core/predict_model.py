@@ -12,3 +12,7 @@ class PredictRequest(BaseModel):
 
 class PredictResponse(BaseModel):
     result: str = Field(..., title="result", description="Text")
+
+
+class LoadModelRequest(BaseModel):
+    model_name: str

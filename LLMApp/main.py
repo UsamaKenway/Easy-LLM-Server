@@ -1,10 +1,13 @@
 from fastapi import FastAPI
-from LLMApp.core.event_handler import start_app_handler
+from LLMApp.core.event_handler import start_app_handler, shutdown_app_handler
 from LLMApp.api.api import router
-app = FastAPI()
+from LLMApp.app import app
+
+# app = FastAPI()
 
 app.add_event_handler("startup", start_app_handler(
     app, "meta-llama/Llama-2-7b-chat-hf"))
+app.add_event_handler("shutdown", shutdown_app_handler(app))
 
 app.include_router(router)
 
