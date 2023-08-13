@@ -1,6 +1,17 @@
 # LLM-fastapi-n-gradio-server
 This project allows you to use open-source language models in your applications through an API and test the models in real-time using Gradio's web user interface. It includes an implementation of Langchain.
 
+### Features:
+- Any HF model inference support
+- Any GPTQ model inference support
+- Gradio UI
+- Docker image through Github Actions
+- FastAPI | Conversation request in ChatGPT format
+- FastAPI | Load model through API
+- FastAPI | Unload model through API
+- Langchain code | support for any conversation memory type
+- Langchain code | Custom Ai Prefix and Human Prefix names
+
 The project can run in 2 ways.
 1. Fastapi only mode, you run it through uvicorn command. "[Jump to example](#launch-through-uvicorn-command)"
 2. Gradio + Fastapi which you can run by launching ```server.py```. 
@@ -101,11 +112,7 @@ By default the model loads in ```_startup_model()``` through ```start_app_handle
 </details>
 
 ### Upcoming features
-- 
-- 
 - Gradio containing options to change character names
 - vector DB for longterm chat history
-- control over quantization config through loading model
+- control over quantization config through loading model API # for now you have to change the code
 
-Issues: 
-- torch.cuda.empty_cache() doesnt clear vram when unloading model.
