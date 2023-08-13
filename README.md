@@ -70,6 +70,7 @@ code here: [LLMApp/langchain/conversation.py](./LLMApp/langchain/conversation.py
 Example of How you can use it in your Backend app here: [gradio_/chatbot.py](./gradio_/chatbot.py) 
 
 </details>
+
 ### Model Load
 ### Load Model through API:
 Post request @: ```sh http://localhost:8080/load_model/ ```
@@ -84,6 +85,8 @@ This will unload the previous model and load the model you specify. If the model
 ```http://localhost:8080/unload_model```
 
 ### Understanding model loading code:
+<details>
+<summary>Click to Expand</summary>
 Both HF and quantized models are supported. Class here: [LLMApp/models/load_llm.py](./LLMApp/models/load_llm.py) 
 
 1. Load using HF transformers.AutoModelForCausalLM.from_pretrained:
@@ -99,7 +102,7 @@ GPTQModel(model_name)
 ```
 By default the model loads in ```_startup_model()``` through ```start_app_handler```
 
-
+</details>
 ### Upcoming features
 - 
 - 
