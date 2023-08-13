@@ -48,7 +48,7 @@ class HFModel:
 
         self.base_model = AutoModelForCausalLM.from_pretrained(self.model_name,
                                                                quantization_config=nf4_config,
-                                                               use_auth_token=True)
+                                                               use_auth_token=False)
         # self.base_model = AutoModelForCausalLM.from_pretrained(
         #     self.model_name,
         #     quantization_config=nf4_config,

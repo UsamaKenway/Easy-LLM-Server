@@ -6,7 +6,7 @@ from LLMApp.app import app
 # app = FastAPI()
 
 app.add_event_handler("startup", start_app_handler(
-    app, "meta-llama/Llama-2-7b-chat-hf"))
+    app, "abhishek/llama-2-7b-hf-small-shards"))
 app.add_event_handler("shutdown", shutdown_app_handler(app))
 
 app.include_router(router)
