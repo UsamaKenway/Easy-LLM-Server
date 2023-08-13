@@ -72,7 +72,7 @@ Example of How you can use it in your Backend app here: [gradio_/chatbot.py](./g
 </details>
 
 ### Model Load
-### Load Model through API:
+#### Load Model through API:
 Post request @: ```sh http://localhost:8080/load_model/ ```
 payload:
 ```
@@ -81,7 +81,7 @@ payload:
 }
 ```
 This will unload the previous model and load the model you specify. If the model is in a private repo. You need to provide hugging face read token through hf cli login
-### Unload Model through API:
+#### Unload Model through API:
 ```http://localhost:8080/unload_model```
 
 ### Understanding model loading code:
@@ -103,6 +103,7 @@ GPTQModel(model_name)
 By default the model loads in ```_startup_model()``` through ```start_app_handler```
 
 </details>
+
 ### Upcoming features
 - 
 - 
