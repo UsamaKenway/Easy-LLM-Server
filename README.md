@@ -1,4 +1,4 @@
-# LLM-fastapi-n-gradio-server
+# Easy-LLM-Server
 This project allows you to use open-source language models in your applications through an API and test the models in real-time using Gradio's web user interface. It includes an implementation of Langchain.
 
 ### Features:
