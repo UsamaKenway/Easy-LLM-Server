@@ -2,6 +2,10 @@
 # Easy-LLM-Server
 This project allows you to use open-source language models in your applications through an API and test the models in real-time using Gradio's web user interface. It includes an implementation of Langchain.
 
+<p align="left" style="display: none;">
+  <img src="https://komarev.com/ghpvc/?username=easyllmserver&label=Profile%20views&color=0e75b6&style=flat" alt="Profile views" />
+</p>
+
 ### Features:
 - 🧠 Any HF model inference support
 - 🧠 Any GPTQ model inference support
