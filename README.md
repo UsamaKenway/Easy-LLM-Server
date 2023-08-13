@@ -37,10 +37,10 @@ The chatbot API follows the format commonly used in ChatGPT, making it familiar 
 ```sh
 {
   "messages": [
-    {"role": "system", "content": "You are a helpful assistant."},
-    {"role": "user", "content": "Who won the world series in 2020?"},
-    {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
-    {"role": "user", "content": "Where was it played?"}
+    {"role": "system", "content": "Conversation between an Assistant and the user"},
+    {"role": "user", "content": "What's your favourite book, Nora?"},
+    {"role": "assistant", "content": "I don't have personal preferences, but I'm knowledgeable about many books."},
+    {"role": "user", "content": "That's impressive! Can you recommend a classic novel?"}
   ]
 }
 ```
@@ -48,13 +48,13 @@ You can also assign names to the roles for a role-playing conversation:
 
 ```sh
 {
-  "user_name": "Batman",
-  "ai_name": "Mia",
+  "user_name": "Victor",
+  "ai_name": "Nora",
   "messages": [
-    {"role": "system", "content": "Conversation with the Gotham Knight"},
-    {"role": "user", "content": "When did you meet Superman the last time"},
-    {"role": "assistant", "content": "Last month"},
-    {"role": "user", "content": "How did it go"}
+    {"role": "system", "content": "Conversation between an Assistant and the user"},
+    {"role": "user", "content": "What's your favourite book, Nora?"},
+    {"role": "assistant", "content": "I don't have personal preferences, but I'm knowledgeable about many books."},
+    {"role": "user", "content": "That's impressive! Can you recommend a classic novel?"}
   ]
 }
 ```
