@@ -32,9 +32,11 @@ In case you are unable to install auto-gptq, you can find your desired .whl file
 
 
 ### Payload-example
+<details>
+<summary>Click to Expand</summary>
 The chatbot API follows the format commonly used in ChatGPT, making it familiar to many users. You can send messages in a list, where each message is a dictionary with two key-value pairs: "role" and "content". The roles can be "system", "user", or "assistant". For example:
+  
 ```sh
-
 {
   "messages": [
     {"role": "system", "content": "You are a helpful assistant."},
@@ -67,6 +69,7 @@ If the Last message is not from ```"role": "user"```, the system will run "conti
 code here: [LLMApp/langchain/conversation.py](./LLMApp/langchain/conversation.py)
 Example of How you can use it in your Backend app here: [gradio_/chatbot.py](./gradio_/chatbot.py) 
 
+</details>
 ### Model Load
 ### Load Model through API:
 Post request @: ```sh http://localhost:8080/load_model/ ```
