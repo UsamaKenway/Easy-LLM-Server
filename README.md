@@ -1,6 +1,6 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1n74YhO73qALQCZorcWJA3tqxWOqselXW)
 # Easy-LLM-Server
-This project allows you to use open-source language models in your applications through an API and test the models in real-time using Gradio's web user interface. It includes an implementation of Langchain.
+This project allows you to deploy open-source language models in the cloud and you can use it in your applications through an API and test the models in real-time using Gradio's web user interface. It includes an implementation of Langchain.
 
 ### Features:
 - 🧠 Any HF model inference support
@@ -13,6 +13,9 @@ This project allows you to use open-source language models in your applications 
 - 💬 Langchain code | support for any conversation memory type
 - 💬 Langchain code | Custom Ai Prefix and Human Prefix names
 - ✋ Stop Sequence | Automaticlly stops at human prefix to stop rambling.
+- 🌟 Simple, Clear Code
+- 🚀 Easy Scalability 📈
+- 📝 Up-to-date Colab Notebook 📊
 
 The project can run in 2 ways.
 1. Fastapi only mode, you run it through uvicorn command. "[Jump to example](#launch-through-uvicorn-command)"
@@ -117,6 +120,8 @@ By default the model loads in ```_startup_model()``` through ```start_app_handle
 - Gradio containing options to change character names
 - vector DB for longterm chat history
 - control over quantization config through loading model API # for now you have to change the code
+- Create a docker image for HF endpoints for scaling.
+- Create API to delete models from the cache directory.
 
 ## Contribution
 I welcome contributions to make Easy-LLM-Server better and reliable. You can participate by:
